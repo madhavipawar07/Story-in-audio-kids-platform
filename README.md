@@ -2,7 +2,7 @@
 
 ## Overview
 
-A storytelling web application where teachers upload story text files, which are automatically converted into speech using Amazon Polly. Also Object detection feature is added so that if children upload the picture of any object, it is detected using Amazon rekognition service and translated into audio using amazon polly
+A storytelling web application which is hosted on localhost where teachers upload story text files, which are automatically converted into speech using Amazon Polly. Also Object detection feature is added so that if children upload the picture of any object, it is detected using Amazon rekognition service and translated into audio using amazon polly
 
 ## Features
 
@@ -61,7 +61,7 @@ S3
 
 Audio Player
 
-# API URL 
+## API URL 
 
 https://sv8x22dm6h.execute-api.ap-south-1.amazonaws.com
 

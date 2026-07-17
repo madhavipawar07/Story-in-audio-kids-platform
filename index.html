@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kids Storytelling</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+
+                <div class="logo">
+
+                    <i class="fa-solid fa-book-open-reader"></i>
+
+                    <h2>StoryMagic</h2>
+
+                </div>
+
+                <button id="refreshBtn">
+
+                    <i class="fa-solid fa-rotate"></i>
+
+                    Refresh
+
+                </button>
+
+            </nav>
+
+
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <h1>Turn Stories into <span>Talking Adventures!</span></h1>
+
+        <p>
+
+            Pick a story, choose a picture, and watch the page come alive with friendly words, bright colors, and a playful voice.
+
+        </p>
+
+        <div class="hero-badges">
+            <span class="hero-badge"><i class="fa-solid fa-magic"></i> Magic Voice</span>
+            <span class="hero-badge hero-badge-alt"><i class="fa-solid fa-star"></i> Kid Friendly</span>
+            <span class="hero-badge"><i class="fa-solid fa-face-smile-beam"></i> Playful Fun</span>
+        </div>
+
+        <div class="hero-shapes">
+            <span class="shape shape-1"></span>
+            <span class="shape shape-2"></span>
+            <span class="shape shape-3"></span>
+            <span class="shape shape-4"></span>
+        </div>
+
+        <div class="hero-decor">
+            <span class="sparkle sparkle-1"></span>
+            <span class="sparkle sparkle-2"></span>
+            <span class="sparkle sparkle-3"></span>
+            <span class="sparkle sparkle-4"></span>
+        </div>
+
+    </section>
+
+
+
+    <!-- Upload Card -->
+
+    <section class="upload-section">
+
+        <div class="upload-card">
+
+            <div class="upload-icon">
+
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            </div>
+
+            <h2>Share Your Story</h2>
+
+            <p>
+
+                Pick a fun story file and hear it tell itself in a friendly voice.
+
+            </p>
+
+
+            <input
+
+            type="file"
+
+            id="storyFile"
+
+            accept=".txt"
+
+            hidden>
+
+
+            <label
+
+            for="storyFile"
+
+            class="choose-btn">
+
+            Pick a Story File
+
+            </label>
+
+
+            <p
+
+            id="fileName">
+
+            No file chosen yet
+
+            </p>
+
+
+            <button
+
+            id="uploadBtn">
+
+            Make My Story Talk
+
+            </button>
+
+
+            <div
+
+            class="loader"
+
+            id="loader">
+
+            <div class="spinner"></div>
+
+            <p>
+
+                Converting story into audio...
+
+            </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Image Object Detection -->
+    <section class="upload-section">
+
+        <div class="upload-card">
+
+            <div class="upload-icon">
+
+                <i class="fa-solid fa-image"></i>
+
+            </div>
+
+            <h2>Picture Detective</h2>
+
+            <p>
+
+                Upload a picture and the friendly helper will guess what it sees.
+
+            </p>
+
+            <input
+
+            type="file"
+
+            id="objectImage"
+
+            accept="image/*"
+
+            hidden>
+
+
+            <label
+
+            for="objectImage"
+
+            class="choose-btn">
+
+            Choose Image
+
+            </label>
+
+
+            <p
+
+            id="imageFileName">
+
+            No picture picked yet
+
+            </p>
+
+
+            <div class="preview-box">
+                <img id="imagePreview" src="" alt="Preview">
+            </div>
+
+            <button
+
+            id="detectBtn"
+
+            disabled>
+
+            Detect and Name It
+
+            </button>
+
+            <p id="detectionResult" class="detection-result">
+                Loading picture helper...
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Statistics -->
+
+    <section class="stats">
+
+        <div class="stat-box">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <h3 id="storyCount">0</h3>
+
+            <p>Happy Stories</p>
+
+        </div>
+
+        <div class="stat-box">
+
+            <i class="fa-solid fa-music"></i>
+
+            <h3 id="audioCount">0</h3>
+
+            <p>Audio Adventures</p>
+
+        </div>
+
+        <div class="stat-box">
+
+            <i class="fa-solid fa-microphone"></i>
+
+            <h3>Friendly Voice</h3>
+
+            <p>Happy Reader</p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Story List -->
+
+    <section class="stories">
+
+        <h2>
+
+            <i class="fa-solid fa-headphones"></i>
+
+            Your Story Library
+
+        </h2>
+
+
+        <div
+
+        id="storyContainer"
+
+        class="story-grid">
+
+
+
+            <!-- JavaScript will create cards here -->
+
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Template -->
+
+    <template id="storyTemplate">
+
+        <div class="story-card">
+
+            <div class="story-header">
+
+                <i class="fa-solid fa-book"></i>
+
+                <h3 class="story-title">
+
+                    Story Name
+
+                </h3>
+
+            </div>
+
+
+
+            <div class="details">
+
+                <p>
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    <span class="story-date">
+
+                    Date
+
+                    </span>
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                    Joanna
+
+                </p>
+
+            </div>
+
+
+
+            <audio
+
+            controls
+
+            class="audio-player">
+
+                <source src="">
+
+            </audio>
+
+
+
+            <a
+
+            class="download-btn"
+
+            target="_blank">
+
+                <i class="fa-solid fa-download"></i>
+
+                Download Audio
+
+            </a>
+
+        </div>
+
+    </template>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            StoryMagic Playground • Stories, Pictures, and Fun Voice Adventures
+
+        </p>
+
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.2/dist/coco-ssd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0/dist/mobilenet.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
